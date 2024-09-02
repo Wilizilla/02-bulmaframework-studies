@@ -1,0 +1,99 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+:root {
+        --bulma-primary-h: 328deg;
+        --bulma-primary-l: 45%;
+        --bulma-link-h: 49deg;
+        --bulma-link-s: 96%;
+        --bulma-link-l: 60%;
+        --bulma-success-s: 92%;
+      }
+
+.input{
+        --has-text-left;
+}
+
+/* Para navegadores WebKit (Chrome, Safari, etc.) */
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para o Firefox */
+.input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.notification {
+        --bulma-notification-radius: 0.5rem;
+        display: flex;
+        gap: 1rem;
+}
+
+.navbar{
+        display: flex;
+}
+
+#message-success{
+        stroke: 2px;
+        border-color: var(--bulma-success-s);
+}
+
+#message-alert{
+        stroke: 2px;
+        border-color: var(--bulma-danger-s);
+}
+
+#message-default{
+        stroke: 2px;
+        border-color: var(--bulma-info-s);
+}
+
+/* Media querys */
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+        .navbar{
+                display: flex;
+        }
+        .navbar-end{
+                margin-inline-start: auto;
+        }
+        .navbar-item{
+                display: none;
+        }
+}
+/* Tablet */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+        .navbar{
+                display: flex;
+        }  
+        .navbar-end{
+                margin-inline-start: auto;
+        }
+        .navbar-item{
+                display: none;
+        }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+        .navbar{
+                display: flex;
+        } 
+}
+
+/* Widescreen */
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+        .navbar{
+                display: flex;
+        }
+}
+
+/* FullHD */
+@media screen and (min-width: 1408) {
+        .navbar{
+                display: flex;
+        }
+}

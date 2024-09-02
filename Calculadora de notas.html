@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="pt-BR" class="theme-light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de notas</title>
+    
+<link rel="stylesheet" href="./Calculadora de notas_files/stylesheet.css"><link rel="stylesheet" href="./Calculadora de notas_files/css2"><link rel="icon" href="http://127.0.0.1:5500/assets/img/kaioh-planet.svg"></head>
+<body>
+    
+<!--Header-->
+    <nav class="navbar has-background-light is-fixed-top mb-6 p-1 " role="navigation">
+        <div class="navbar-brand p-2" id="logo-div"> 
+            <img class="image is-32x32" src="./Calculadora de notas_files/kaioh_logo.png" alt="Imagem da escola de artes marciais do Sr. Kaioh">
+        </div>
+
+        <div class="navbar-item p-1" id="site-title">
+        <h1 class="title is-6"> 
+            Calculadora de notas
+        </h1>
+        </div>
+
+        <div class="navbar-end p-1" id="git-logo"> 
+            
+            <a href="https://github.com/Wilizilla/control-notes-absences.git" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"></path>
+                </svg>
+            </a>
+        </div>
+        <hr class="navbar-divider">
+    </nav> <!--header fim -->
+    
+<!--Main-->
+    <div class="columns is-centered has-background-light mt-6 mb-0 p-4 pb-6">
+            <div id="div-form " class="column box is-4 mx-3 mt-6 p-5 pt-6"> <!--div-form-->
+                <form id="form-grades" method="post" class="form">
+                    <div>
+                        <h3 class="title is-4 pb-4 has-text-left">
+                            <span class="icon-text is-size-1 pb-4">📚</span>
+                            <br>Suas notas 
+                        </h3>
+                    </div>
+
+                    <div id="title-decoration"> </div>
+                    
+                    <div>
+                        <label for="form-n1" class="mt-4 pl-1">Adicione a sua nota em N1:</label>
+                        <input class="input is-medium has-text-right" id="form-n1" type="number" name="N1" inputmode="numeric" placeholder="0,00" pattern="[0-9\d{2}\,\d{2}] " step="0.01">
+                        <span class="icon-text has-text-danger">    
+                            <span class="is-small is-size-7 mb-4" id="n1-error"></span>
+                        </span>
+
+                    </div>
+
+                    <div>
+                        <label for="form-ap" class="mt-4 pl-1">Adicione a sua nota em AP:</label>
+                        <input class="input is-medium has-text-right" id="form-ap" type="number" name="AP" inputmode="numeric" placeholder="0,00" pattern="[0-9\d{2}\,\d{2}]" step="0.01">
+                        <span class="icon-text has-text-danger">    
+                            <span class="is-small is-size-7 is-hidden mb-4" id="ap-error"></span>
+                        </span>
+                    </div>
+
+                    <div>
+                        <label for="form-ai" class="mt-4 pl-1">Adicione a sua nota em AI:</label>
+                        <input class="input is-medium has-text-right" id="form-ai" type="number" name="AI" inputmode="numeric" placeholder="0,00" pattern="[0-9\d{2}\,\d{2}]" step="0.01">
+                        <span class="icon-text has-text-danger">    
+                            <span class="is-size-7 is-hidden mb-4" id="ai-error"></span>
+                        </span>
+
+                    </div>
+
+                    <div>
+                        <label for="form-n3" class="mt-4 pl-1">Adicione a sua nota em N3:</label>
+                        <input class="input is-medium has-text-right" id="form-n3" type="number" name="N3" inputmode="numeric" placeholder="0,00" pattern="[0-9\d{2}\,\d{2}]" step="0.01">
+                        <span class="icon-text has-text-danger">
+                            <span class="is-size-7 is-hidden mb-4" id="n3-error"></span> <!-- aqui -->
+                        </span>
+                    </div>
+
+                    <button id="submit-button" type="submit" class="button is-primary is-fullwidth has-text-white mt-4">
+                    <span>Enviar notas</span>
+                    </button>
+
+                    <button class="button is-small is-ghost has-text-dark is-fullwidth mt-4">
+                        <span>Limpar formulário</span>
+                      </button>
+
+
+                </form>
+                
+            </div> <!--div form fim-->
+
+            <!--resultados-->
+            <div id="final-result" class="column box is-4 mx-3 mt-6 mb-5 p-5 pt-6 ">
+                    <div>
+                        <h3 class="title is-4 pb-4 has-text-left">
+                            <span class="icon-text is-size-1 pb-4">📋</span>
+                            <br>Resultado
+                        </h3>
+                    </div>
+                    <div id="title-decoration"> </div>
+                    
+                    <div>
+                        <div>
+                            <p></p> Nota em N1:<p></p>
+                            <p id="p-n1">--</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <p> Nota em N2:</p>
+                            <p id="p-n2">--</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <p> Nota em N3:</p>
+                            <p id="p-n3">--</p>
+                        </div>
+                        <hr>
+                        <div class="mb-4">
+                            <p class="has-text-weight-semibold is-uppercase	 "> Média geral:</p>
+                            <p id="p-media" class="is-size-4">--</p>
+                        </div>
+                            
+                    </div>
+
+                    <div id="message-alert" class="notification is-danger is-light is-hidden">
+                        <span id="emoji-alert" class="icon-text is-size-3">🫠</span> <p id="text-alert">Mensagem:</p>
+                    </div>
+
+                    <div id="message-success" class="notification is-success is-light is-hidden">
+                        <span id="emoji-success" class="icon-text is-size-3">🎉</span> <p id="text-success">Mensagem:</p>
+                    </div>
+
+                    <div id="message-default" class="notification is-info is-light is-hidden">
+                        <span id="emoji-default" class="icon-text is-size-3">📚</span> <p id="text-default">Mensagem:</p>
+                    </div>
+                    
+            </div> 
+            <!--resultados fim-->
+
+    </div> 
+<!--main fim-->
+
+    
+
+<!--Footer-->
+    <footer class="footer has-background-grey-lighter">
+        <p>Notas e faltas - 1.0.0 - Sr. Kaioh</p>
+        <p>by wilian.ventura@gmail.com</p>
+    </footer>
+
+    <script src="./Calculadora de notas_files/decimal-control.js"></script>
+    <script src="./Calculadora de notas_files/form-validation.js"></script>
+    <script src="./Calculadora de notas_files/grades-v2.js"></script>
+
+<!--Fim-->
+    
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
