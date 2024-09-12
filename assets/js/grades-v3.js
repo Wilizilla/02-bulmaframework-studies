@@ -303,8 +303,8 @@ formulario.addEventListener('submit', function(event) {
     
         },
 
-        };
-        
+    };
+              
         // Converte as variáveis para uma chave binária
         const key = `${n3Bit}${aiBit}${apBit}${n1Bit}`;
         
