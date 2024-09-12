@@ -14,7 +14,7 @@ let n3Bit = 0;
         const n1Value = this.value.trim() !== ''; 
         n1Bit = (n1Value === true)? 1 : 0;
     });
-    /*  this se refere ao elemento html que disparou o evento nesse caso input. 
+    /*  entendi que this se refere ao elemento html que disparou o evento nesse caso input. 
      value acesso o valor atual do elemento e 
      trim remove espaços antes e depois da string em caso de acidente */
     
@@ -71,19 +71,18 @@ formulario.addEventListener('submit', function(event) {
     
     // Função que define a mensagem deve ser enviada quando houver N3
     // Os parâmetros são  os seguintes: media = b, N1 =c, N2 = d, N3 = e
-    function finalGrade (b, c, d, e) {
+    function finalGrade (b, c, d) {
 
         // identifica qual a maior nota (N1 ou N2) e calcula nota necessária em N3
         if (c >= d) {
             prevGrade = 12-c
-            console.log('ca - lculei substituindo n2')
+            console.log('calculei substituindo n2')
         } else {
             prevGrade = 12-d
-            console.log('ca - lculei substituindo n1')
+            console.log('calculei substituindo n1')
         }
 
-        console.log('Mé - dia: ' + b)
-
+        console.log('Média: ' + b)
     }
 
     // Função para resetar a mensagem
@@ -100,11 +99,10 @@ formulario.addEventListener('submit', function(event) {
     document.getElementById("p-n2").innerHTML = '--';
     document.getElementById("p-n3").innerHTML = '--';
     document.getElementById("p-media").innerHTML = '--';
-
     };
 
     //Função para mostrar mensagem m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto
-    function showMsg(m,n,o){ //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q=select emoji
+    function showMsg(m,n,o,q,p){ //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q=select emoji
         document.getElementById(m).classList.remove('is-hidden'); // mostra msg
         document.getElementById(n).innerHTML = q; // ajusta emoji
         document.getElementById(o).innerHTML = p; // ajusta texto
@@ -115,166 +113,205 @@ formulario.addEventListener('submit', function(event) {
     const actions = {
 
         '0000': () => {
-            console.log('00 - '),
-            clearGrades();
+            console.log('00 - input none');
             clearMsg ();
-            showMsg('message-alert','emoji-alert','text-alert') //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+        // #####
+        '0001': () => {
+            console.log('01 - input N1');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
+        // #####
+        '0010': () => {
+                console.log('02 - input AP');
+                clearMsg ();
+                console.log('message: clear');
+                clearGrades ();
+                console.log('info grades: clear');
+    
+                finalGrade();
+        
             },
 
         // #####
-        '0001': () => console.log('01 - '),
+        '0011': () => {
+            console.log('03 - input N1, AP');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
         // #####
-        '0010': () => console.log('02 - '),
+        '0100': () => {
+            console.log('04 - input AI');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
         // #####
-        '0011': () => console.log('03 - '),
+        '0101': () => {
+            console.log('05 - input N1, AI');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
         // #####
-        '0100': () => console.log('04 - '),
+        '0110': () => {
+            console.log('06 - input AP, AI');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
         // #####
-        '0101': () => console.log('05 - '),
-        // #####
-        '0110': () => console.log('06 - '),
-        // #####
-        '0111': () => console.log('07 - '),
+        '0111': () => {
+            console.log('07 - input N1, AP, AI');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
         // #####
         '1000': () => {
-            console.log('08 - AP');
-            // configura emogi e texto da mensagem
-            let = prevGrade = (12-n1);
-            if (n1 >= 6) { 
-                q = '🤓';
-                p = '<b>Muito bem!</b> </br> Você só precisa tirar ' + prevGrade + ' em N2 para manter a média. </br> <i>(N2 é igual a média entre AP e AI.)</i>'
-                
-            } else{
-                q = '😳'
-                p = '<b>Atenção!</b> </br> você precisa tirar pelo menos ' + prevGrade + ' em N2. Continue estudando.';
-            }
-            clearGrades(); //reseta notas
-            clearMsg (); // reseta mensagem
-            // configura mensagem
-            //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-            showMsg('message-default','emoji-default','text-default') 
-            document.getElementById("text-default").innerHTML = p;
-            // configura notas
-            document.getElementById("p-n1").innerHTML = n1;
-                
-            },
+            console.log('08 - input N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
+
+
         // #####
         '1001': () => {
-            console.log('09 - '),
-            clearGrades(); //reseta notas
-            clearMsg (); // reseta mensagem
-            
-            // configura emogi e texto da mensagem
-            media = (n1+n3)/2;
-            let fildConfig;
-            if (media >= 6) { 
-                q = '🤓';
-                p = '<b>Parabéns! Você foi aprovado</b> </br> Sua média foi: ' + media
-                // configura mensagem
-                //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-                showMsg('message-success','emoji-success','text-success') 
-                document.getElementById("text-success").innerHTML = p;
-                
-            } else{
-                q = '😳'
-                p = '<b>Você não obteve a média necessária.</b> </br> Entre em contato com a secretária para mais informações'
-                // configura mensagem
-                //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-                showMsg('message-alert','emoji-alert','text-alert') 
-                document.getElementById("text-alert").innerHTML = p;
-            }
-            
-            // configura notas
-            document.getElementById("p-n1").innerHTML = n1;
-            document.getElementById("p-n3").innerHTML = n3;
-            document.getElementById("p-media").innerHTML = media;
-            },
+            console.log('09 - input N1, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
 
         // #####
         '1010': () => {
-            console.log('10 - '),
-            clearGrades(); //reseta notas
-            clearMsg (); // reseta mensagem
+            console.log('10 - input AP, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
             
-            // configura emogi e texto da mensagem
-            media = (n1+n3)/2;
+        // #####
+        '1011': () => {
+            console.log('11 - input N1, AP, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
 
-            if(n1>n2){
-                prevGrade = 12 -n1
-            } else {
-                pervGrade = 12 -n2
-            };
+            finalGrade();
+    
+        },
 
-            if (prevGrade <=6) { 
-                q = '🧐';
-                p = '<b>Atenção</b> </br> Você precisa tirar: ' + prevGrade + ' em N3 para ser aprovado. Continue estudando'
-                // configura mensagem
-                //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-                showMsg('message-success','emoji-success','text-success') 
-                document.getElementById("text-success").innerHTML = p;
-                
-            } else{
-                q = '😳'
-                p = '<b>Atenção!</b> </br> Não e mais possível atingir a média necessária em N3. Entre em contato com a secretária academica para mais informações'
-                // configura mensagem
-                //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-                showMsg('message-alert','emoji-alert','text-alert') 
-                document.getElementById("text-alert").innerHTML = p;
-            }
+        // #####
+        '1100': () => {
+            console.log('12 - input AI, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
             
-            // configura notas
-            document.getElementById("p-n1").innerHTML = n1;
-            document.getElementById("p-n3").innerHTML = n3;
-            document.getElementById("p-media").innerHTML = media;
-            },
+        // #####
+        '1101': () => {
+            console.log('case 03 - input N1, AI, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
 
         // #####
+        '1110': () => {
+            console.log('14 - input AP, AI, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
 
-        '1011': () => 
-            console.log('11 - '),
-
-            // #####
-        '1100': () => {console.log('12 - ');
-            let = prevGrade = 24-ap-(2*n1);
-            if (prevGrade <= 10) {  
-                q = '🤓';
-                p = 'Muito bem. Você só precisa tirar: ' + prevGrade + ' em AI.'
-            } else{
-                q = '😳'
-                p = 'Atenção. Você precisa tirar: ' + prevGrade + ' em AI. Continue estudando.'
-            };
-        clearGrades(); //reseta notas
-        clearMsg (); // reseta mensagem
-        // configura mensagem
-        //m=tipo de msg, n=id emoji, o=id texto, p=variavel de texto q variavel do emoji
-        showMsg('message-default','emoji-default','text-default',n1) 
-        document.getElementById("text-default").innerHTML = (p);
-        // configura notas
-        document.getElementById("p-n1").innerHTML = n1;
-        document.getElementById("p-ap").innerHTML = ap;
-        },     
+            finalGrade();
+    
+        },
 
         // #####
-        '1101': () => console.log('13 - '),
-        // #####
-        '1110': () => console.log('14 - '),
-        // #####
-        '1111': () => console.log('15 - '),
+        '1111': () => {
+            console.log('15 - input N1, AP, AI, N3');
+            clearMsg ();
+            console.log('message: clear');
+            clearGrades ();
+            console.log('info grades: clear');
+
+            finalGrade();
+    
+        },
 
         };
         
-        /* console.log(n1Bit);
-        console.log(apBit);
-        console.log(aiBit);
-        console.log(n3Bit);   */
-        
         // Converte as variáveis para uma chave binária
-        const key = `${n1Bit}${apBit}${aiBit}${n3Bit}`;
-        console.log(key);
+        const key = `${n3Bit}${aiBit}${apBit}${n1Bit}`;
         
         // Executa a ação correspondente
         actions[key]();
-
+        console.log('bin: ' + key);
+        
         document.getElementById
 
 });
