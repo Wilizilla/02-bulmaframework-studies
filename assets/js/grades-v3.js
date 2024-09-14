@@ -12,7 +12,7 @@ let n3Bit = 0;
     n1List.addEventListener('input', function() {
         // Checa se o campo N1 foi preenchido
         const n1Value = this.value.trim() !== ''; 
-        n1Bit = (n1Value === true)? 1 : 0;
+        n1Bit = (n1Value === true)? 1 : 0; // isso aqui é uma operação ternaria, tipo um if simplificado
     });
     /*  entendi que this se refere ao elemento html que disparou o evento nesse caso input. 
      value acesso o valor atual do elemento e 
